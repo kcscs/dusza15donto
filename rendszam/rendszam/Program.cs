@@ -11,7 +11,7 @@ namespace rendszam
         static void Main(string[] args) {
 
 
-            asd
+            
         }
     }
 }
