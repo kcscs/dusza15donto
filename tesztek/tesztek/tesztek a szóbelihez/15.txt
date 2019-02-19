@@ -1,7 +1,0 @@
-XXXX     X    XXXX             XX  XXXXX    XX 
-X   X   X X   X   X           X X  X       X   
-X   X  X   X  X   X          X  X  X      X    
-XXXX   X   X  XXXX    XXX   X   X  XXXX   XXXX 
-X X    X X X  X             XXXXX      X  X   X
-X  X    X X   X                 X  X   X  X   X
-X   X    X X  X                 X   XXX    XXX 
