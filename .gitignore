@@ -1,1 +1,3 @@
-**/db.lock
+*
+!.gitignore
+!*.cs
