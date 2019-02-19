@@ -1,0 +1,25 @@
+rendszam;forgalmi ervenyessege;szin;tulajdonos neve;tulajdonos cime
+DCB-321;2016.07.13.;lila;Aragorn;Kozepfolde Pajkos Ponihoz fogado
+CBA-012;2018.12.26.;szurke;Gimli;Kozepfolde Banya ut 23.
+AZV-654;2016.08.28.;fekete;Sauron;Mordor Vegzet Hegye
+OPQ-098;2017.02.04.;fekete;Saruman;Vasudvard Torony utca 66.
+RST-321;2017.11.11.;szurke;Gandalf;Kozepfolde Magia setany 13.
+FED-345;2016.03.20.;szurke;Gandalf;Kozepfolde Magia setany 13.
+OCT-258;2016.10.28.;fekete;Saruman;Vasudvard Torony utca 66.
+IJK-456;2016.02.23.;fekete;Galadriel;Kozepfolde Szello utca 99.
+VWZ-987;2015.06.28.;piros;Csavardi Samu;Megyer Topart koz 2.
+VYX-987;2016.01.03.;piros;Legolas;Kozepfolde Felho utca 123.
+UTS-789;2016.07.27.;sarga;Gandalf;Pagonye Magia setany 13.
+RQP-456;2016.05.16.;sarga;Tuk Peregrin;Megyer Hatar ut 5.
+LKJ-901;2016.04.01.;szurke;Nagy Esmeralda;Nevesincs Kiraly utja 5.
+YXU-654;2018.01.04.;sarga;Borbak Trufiadok;Megyer Hatar ut 15.
+CDE-567;2016.03.08.;fekete;Sauron;Mordor Vegzet Hegye
+ZTF-726;2015.05.08.;szurke;Boromir;Gondor Var utca 3.
+ZXD-763;2015.03.01.;szurke;Zsakos Frodo;Gordor Gyuruk utja 1.
+ABS-234;2016.02.20.;fekete;Toto Moti;Kistalpa Kisfold utca 3.
+DWC-763;2017.02.01.;piros;Kis Vendel;Alper Gyuruk utja 5.
+SVZ-873;2018.03.01.;szurke;Voros Begy;Megyer Tornyok utja 1.
+MNC-349;2017.12.31.;piros;Kek Kalap;Megyer Gyuruk utja 7.
+KLM-487;2016.03.01.;lila;Zsakos Frodo;Mordor Gyorok utja 1.
+JUZ-960;2016.07.01.;szurke;Kis Malinda;Mordor Kezdet utja 1.
+LKT-104;2016.04.01.;szurke;Nagy Esmeralda;Nevesincs Kiraly utja 5.
