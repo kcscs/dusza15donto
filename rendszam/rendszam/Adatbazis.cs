@@ -11,6 +11,7 @@ namespace rendszam
     {
         public static List<Jarmu> jarmuvek = new List<Jarmu>();
         public static List<string> korozott = new List<string>();
+        public static List<string> razziaHelyek = new List<string>();
 
         public static void Beolvas() { //beolvasas
             using (StreamReader sr = new StreamReader("jarmu.txt"))
@@ -33,6 +34,50 @@ namespace rendszam
                     
                 }
             }
+        }
+        static List<string> razziaHely()
+        {
+            int maxVaros=1;
+            List<string> razziaHely=new List<string>();
+            Dictionary<string, int> varosSzam = new Dictionary<string, int>();
+            foreach (var i in korozott)
+            {
+                foreach (var j in jarmuvek)
+                {
+                    if(i==j.rendszam)
+                    {
+                        string[] elemek=j.cim.Split(' ');
+                        string varosNev = elemek[0];
+                        razziaHelyek.Add(varosNev);
+
+                    }
+                }
+            }
+            foreach (var k in razziaHelyek)
+            {
+                if(varosSzam.ContainsKey(k))
+                {
+                    varosSzam[k]++;
+                }
+                else
+                {
+                    varosSzam.Add(k, 1);
+                }
+            }
+            foreach (var l in varosSzam)
+            {
+                if(l.Value>maxVaros)
+                {
+                    maxVaros = l.Value;
+                    razziaHely.Clear();
+                    razziaHely.Add(l.Key);
+                }
+                else if(l.Value==maxVaros)
+                {
+                    razziaHely.Add(l.Key);
+                }
+            }
+            return razziaHely;
         }
     }
 }
