@@ -15,7 +15,7 @@ namespace rendszam
             Adatbazis.Beolvas();
             List<string> rendsz = RendszamFelismero.Felismer();
 
-            rendsz.Add("OCT-258");
+            /*rendsz.Add("OCT-258");
             rendsz.Add("ABC-123");
             rendsz.Add("PEQ-536");
             rendsz.Add("NEJ-759");
@@ -34,7 +34,7 @@ namespace rendszam
             rendsz.Add("PEQ-536");
             rendsz.Add("NEJ-759");
             rendsz.Add("DYJ-856");
-            rendsz.Add("JUZ-960");
+            rendsz.Add("JUZ-960");*/
 
 
 
