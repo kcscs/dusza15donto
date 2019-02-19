@@ -1,7 +1,2 @@
 .vs
-*.cache
-rendszam.sln
-rendszam/rendszam/bin/*
-rendszam/rendszam/obj/*
-rendszam/rendszam/Properties/*
-rendszam/rendszam/rendszam.csproj
+
