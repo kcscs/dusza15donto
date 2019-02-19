@@ -15,13 +15,6 @@ namespace rendszam
             Adatbazis.Beolvas();
             List<string> rendsz = RendszamFelismero.Felismer();
 
-         /* rendsz.Add("OCT-258");
-            rendsz.Add("ABC-123");
-            rendsz.Add("PEQ-536");
-            rendsz.Add("NEJ-759");
-            rendsz.Add("DYJ-856");
-            rendsz.Add("JUZ-960");
-            rendsz.Add("NINCS-BENNE");
             rendsz.Add("OCT-258");
             rendsz.Add("ABC-123");
             rendsz.Add("PEQ-536");
@@ -34,7 +27,14 @@ namespace rendszam
             rendsz.Add("PEQ-536");
             rendsz.Add("NEJ-759");
             rendsz.Add("DYJ-856");
-            rendsz.Add("JUZ-960"); */
+            rendsz.Add("JUZ-960");
+            rendsz.Add("NINCS-BENNE");
+            rendsz.Add("OCT-258");
+            rendsz.Add("ABC-123");
+            rendsz.Add("PEQ-536");
+            rendsz.Add("NEJ-759");
+            rendsz.Add("DYJ-856");
+            rendsz.Add("JUZ-960");
 
 
 
@@ -87,6 +87,51 @@ namespace rendszam
 
                 }
             }
+            //Színek megtalálása
+            List<string> szinek = new List<string>();
+            int kint = 0;
+            foreach(Jarmu jarmu in Adatbazis.jarmuvek)
+            {
+                    szinek.Add(Adatbazis.jarmuvek[kint].szin);
+                    kint++;
+            }
+            for(int i=0;i<szinek.Count;i++)
+            {
+                for(int j=0;j<szinek.Count;j++)
+                {
+                    if(szinek[i]==szinek[j] && i!=j)
+                    {
+                        szinek.RemoveAt(i);
+                        i = 0;
+                        break;
+                    }
+                }
+            }
+            int[] megszamol = new int[szinek.Count];
+
+            for(int i=0;i<szinek.Count;i++)
+            {
+                megszamol[i] = 0;
+            }
+
+            int osszesen = 0;
+
+            for (int i=0;i<szinek.Count;i++)
+            {
+                foreach(Jarmu jarmu in Adatbazis.jarmuvek)
+                {
+                    if(szinek[i]==jarmu.szin)
+                    {
+                        megszamol[i]++;
+                        osszesen++;
+                    }
+                }
+            }
+            for(int i=0;i<szinek.Count;i++)
+            {
+                Console.WriteLine(szinek[i] + ": " + Math.Round(megszamol[i] * 100.0 / osszesen, 0) + "%");
+            }
+            Console.ReadKey();
             
         }
     }
