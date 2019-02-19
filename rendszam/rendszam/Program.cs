@@ -15,12 +15,40 @@ namespace rendszam
             Adatbazis.Beolvas();
             List<string> rendsz = RendszamFelismero.Felismer();
 
+         /* rendsz.Add("OCT-258");
+            rendsz.Add("ABC-123");
+            rendsz.Add("PEQ-536");
+            rendsz.Add("NEJ-759");
+            rendsz.Add("DYJ-856");
+            rendsz.Add("JUZ-960");
+            rendsz.Add("NINCS-BENNE");
+            rendsz.Add("OCT-258");
+            rendsz.Add("ABC-123");
+            rendsz.Add("PEQ-536");
+            rendsz.Add("NEJ-759");
+            rendsz.Add("DYJ-856");
+            rendsz.Add("JUZ-960");
+            rendsz.Add("NINCS-BENNE");
+            rendsz.Add("OCT-258");
+            rendsz.Add("ABC-123");
+            rendsz.Add("PEQ-536");
+            rendsz.Add("NEJ-759");
+            rendsz.Add("DYJ-856");
+            rendsz.Add("JUZ-960"); */
+
+
+
+
+
+
             using (StreamWriter sw = new StreamWriter("osszesit.txt"))
             {
                 for (int i = 0; i < 20; i++)
                 {
                     int megtalalt = 0;
                     int j = 0;
+                    megtalalt = 0;
+                    j = 0;
                     string korozes = "nem korozik";
                     string ervenyesseg = "nem ervenyes";
                     bool nyilvantartasban = false;
