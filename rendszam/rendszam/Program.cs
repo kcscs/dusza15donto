@@ -41,8 +41,13 @@ namespace rendszam
 
 
 
-            using (StreamWriter sw = new StreamWriter("osszesit.txt"))
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            using (StreamWriter sw = new StreamWriter("osszesit.txt:"))
             {
+                Console.WriteLine("\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("osszesit.txt\n");
+                Console.ForegroundColor = ConsoleColor.White;
                 for (int i = 0; i < 20; i++)
                 {
                     int megtalalt = 0;
@@ -80,14 +85,20 @@ namespace rendszam
                     if(nyilvantartasban)
                     {
                         sw.WriteLine(rendsz[i] + ";" + ervenyesseg + ";" + korozes);
+                        Console.WriteLine(rendsz[i] + ";" + ervenyesseg + ";" + korozes);
                     } else
                         {
                         sw.WriteLine(rendsz[i] + ";" + "nincs nyilvantartva");
+                        Console.WriteLine(rendsz[i] + ";" + "nincs nyilvantartva");
                         }
 
                 }
             }
             //Színek megtalálása
+            Console.WriteLine("\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Legkorozottebb szinek:\n");
+            Console.ForegroundColor = ConsoleColor.White;
             List<string> szinek = new List<string>();
             int kint = 0;
             foreach(Jarmu jarmu in Adatbazis.jarmuvek)
@@ -116,21 +127,53 @@ namespace rendszam
 
             int osszesen = 0;
 
-            for (int i=0;i<szinek.Count;i++)
+            for (int i = 0; i < szinek.Count; i++)
             {
-                foreach(Jarmu jarmu in Adatbazis.jarmuvek)
+                foreach (Jarmu jarmu in Adatbazis.jarmuvek)
                 {
-                    if(szinek[i]==jarmu.szin)
+                    if (szinek[i] == jarmu.szin)
                     {
                         megszamol[i]++;
                         osszesen++;
                     }
                 }
             }
-            for(int i=0;i<szinek.Count;i++)
+            int[] eredetiMegszamol = new int[szinek.Count];
+            Array.Copy(megszamol, eredetiMegszamol, szinek.Count);
+            Array.Sort<int>(megszamol,
+                   new Comparison<int>(
+                           (i1, i2) => i2.CompareTo(i1)
+                   ));
+
+            int x = 0;
+            
+            for (int i=0;i<szinek.Count;i++)
             {
-                Console.WriteLine(szinek[i] + ": " + Math.Round(megszamol[i] * 100.0 / osszesen, 0) + "%");
+                x = 0;
+                foreach(var szin in szinek)
+                {
+                    if(megszamol[i]==eredetiMegszamol[x])
+                    {
+                         Console.WriteLine(szinek[x] + ": " + Math.Round(megszamol[i] * 100.0 / osszesen, 0) + "%");
+                        megszamol[i] = -1; //Ha két ugyanolyan % van, akkor ne azt találja meg amit már egyszer megtalált
+                    }
+                    x++;
+                }
             }
+            
+
+
+            List<string> razzia = new List<string>();
+            razzia = Adatbazis.razziaHely();
+            Console.WriteLine("\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Razziahelyek:\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            for (int i=0;i<razzia.Count;i++)
+            {
+                Console.WriteLine(razzia[i]);
+            }
+            Console.WriteLine("_____________________");
             Console.ReadKey();
             
         }

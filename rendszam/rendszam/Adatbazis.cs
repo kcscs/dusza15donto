@@ -35,7 +35,7 @@ namespace rendszam
                 }
             }
         }
-        static List<string> razziaHely()
+        public static List<string> razziaHely()
         {
             int maxVaros=1;
             List<string> razziaHely=new List<string>();
