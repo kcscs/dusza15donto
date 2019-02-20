@@ -42,7 +42,7 @@ namespace rendszam
 
 
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            using (StreamWriter sw = new StreamWriter("osszesit.txt:"))
+            using (StreamWriter sw = new StreamWriter("osszesit.txt"))
             {
                 Console.WriteLine("\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -169,9 +169,12 @@ namespace rendszam
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Razziahelyek:\n");
             Console.ForegroundColor = ConsoleColor.White;
-            for (int i=0;i<razzia.Count;i++)
-            {
-                Console.WriteLine(razzia[i]);
+            if (razzia.Count > 0) {
+                for (int i = 0; i < razzia.Count; i++) {
+                    Console.WriteLine(razzia[i]);
+                }
+            } else {
+                Console.WriteLine("Nincs kiemelt helyszín.");
             }
             Console.WriteLine("_____________________");
             Console.ReadKey();
