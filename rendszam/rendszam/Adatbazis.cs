@@ -16,7 +16,7 @@ namespace rendszam
         public static void Beolvas() { //beolvasas
             using (StreamReader sr = new StreamReader("jarmu.txt"))
             {
-                string fejLec = sr.ReadLine();
+                string fejLec = sr.ReadLine();// az első sor még nem adat
                 while (!sr.EndOfStream)
                 {
                     string adatSor = sr.ReadLine();
@@ -30,54 +30,54 @@ namespace rendszam
                 {
                     string rendSzam;
                     rendSzam = sr2.ReadLine();
-                    korozott.Add(rendSzam);
+                    korozott.Add(rendSzam);//lista feltöltése
                     
                 }
             }
         }
-        public static List<string> razziaHely()
+        public static List<string> razziaHely()//megkeresi a razziára leginkább alkalmas területeket
         {
             int maxVaros=1;
-            List<string> razziaHely=new List<string>();
-            Dictionary<string, int> varosSzam = new Dictionary<string, int>();
+            List<string> razziaHely=new List<string>();//azok a városok ahol a körözött autók tulajai laknak
+            Dictionary<string, int> varosSzam = new Dictionary<string, int>();//melyik városba(key) mennyi körözött autóval rendelkező tulaj(value) lakik
             foreach (var i in korozott)
             {
                 foreach (var j in jarmuvek)
                 {
                     if(i==j.rendszam)
                     {
-                        string[] elemek=j.cim.Split(' ');
+                        string[] elemek=j.cim.Split(' ');//kiveszi az adott címből a várost
                         string varosNev = elemek[0];
-                        razziaHelyek.Add(varosNev);
+                        razziaHelyek.Add(varosNev);//az adott körözött autó tulajának városát adja hozzá
 
                     }
                 }
             }
-            foreach (var k in razziaHelyek)
+            foreach (var k in razziaHelyek)//végigmegy a javasolt razziahelyeken
             {
                 if(varosSzam.ContainsKey(k))
                 {
-                    varosSzam[k]++;
+                    varosSzam[k]++;//ha már tartalmazza a lista akkor növeli a számát 
                 }
                 else
                 {
-                    varosSzam.Add(k, 1);
+                    varosSzam.Add(k, 1);//ha még nem akkor hozzáadja a várost
                 }
             }
             foreach (var l in varosSzam)
             {
-                if(l.Value>maxVaros)
+                if(l.Value>maxVaros)//megkeresi a legnagyobb értékhez tartozó várost és feltölti a razziaHely listába
                 {
                     maxVaros = l.Value;
                     razziaHely.Clear();
                     razziaHely.Add(l.Key);
                 }
-                else if(l.Value==maxVaros)
+                else if(l.Value==maxVaros)//ha több ilyen város van feltölti az összeset a razziaHely listába
                 {
                     razziaHely.Add(l.Key);
                 }
             }
-            return razziaHely;
+            return razziaHely;//a függvény a javasolt razziahelyek listájával tér vissza
         }
     }
 }
