@@ -8,16 +8,16 @@ namespace rendszam
 {
     class Jarmu
     {
-        public string rendszam;
-        public DateTime forgErv;
-        public string szin;
-        public string tulajdonos;
-        public string cim;
+        public string rendszam;//az autó rendszáma
+        public DateTime forgErv;//a forgalmi érvényességének határideje
+        public string szin;//az autó színe
+        public string tulajdonos;//a tulajdonos neve
+        public string cim;//a tulajdonos lakcíme
 
         public Jarmu() { }
 
         public Jarmu(string sor) {
-            string[] sorElemek = sor.Split(';');
+            string[] sorElemek = sor.Split(';');//az adatsor szétválogatása a sorElemek tömbbe
             rendszam = sorElemek[0];
             forgErv = DateTime.Parse(sorElemek[1]);
             szin = sorElemek[2];
