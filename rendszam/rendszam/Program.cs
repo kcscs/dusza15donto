@@ -12,8 +12,8 @@ namespace rendszam
     class Program
     {
         static void Main(string[] args) {
-            Adatbazis.Beolvas();
-            List<string> rendsz = RendszamFelismero.Felismer();
+            Adatbazis.Beolvas();  // Járművek beolvasása
+            List<string> rendsz = RendszamFelismero.Felismer(); // Rendsz lista feltöltése a felismert rendszámokkal
 
             /*rendsz.Add("OCT-258");
             rendsz.Add("ABC-123");
@@ -41,38 +41,38 @@ namespace rendszam
 
 
 
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-            using (StreamWriter sw = new StreamWriter("osszesit.txt"))
+            Console.OutputEncoding = System.Text.Encoding.UTF8; // Ez a sor által lehetséges az ' ‾ ' karakterek kiíratása
+            using (StreamWriter sw = new StreamWriter("osszesit.txt")) // osszesit.-txt létrehozása, feltöltése
             {
                 Console.WriteLine("\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("osszesit.txt\n");
                 Console.ForegroundColor = ConsoleColor.White;
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 20; i++) 
                 {
-                    int megtalalt = 0;
+                    int megtalalt = 0; // Ha meglett találva az adatbázisban, akkor elmenti, hogy hanyadik sorban van   
                     int j = 0;
-                    megtalalt = 0;
+                    megtalalt = 0; 
                     j = 0;
                     string korozes = "nem korozik";
                     string ervenyesseg = "nem ervenyes";
                     bool nyilvantartasban = false;
                     foreach(Jarmu jarmu in Adatbazis.jarmuvek)
                     {
-                        if (rendsz[i] == Adatbazis.jarmuvek[megtalalt].rendszam)
+                        if (rendsz[i] == Adatbazis.jarmuvek[megtalalt].rendszam) // Az adott rendszám megtalálása az adatbázisban
                         {
-                            nyilvantartasban = true;
+                            nyilvantartasban = true; // Ha megtalálható az adatbásisban, akkor kerüljön bele a nyílvántartásba
 
                             if(Adatbazis.jarmuvek[megtalalt].forgErv>=DateTime.Today)
                             {
-                                ervenyesseg = "ervenyes";
+                                ervenyesseg = "ervenyes"; // Ha a forgalmi érvényességi nagyobb mint a mai nap, akkor legyen érvényes (alapból nem érvényes)
                             }
 
                             foreach(string korozesek in Adatbazis.korozott)
                             {
                                 if (Adatbazis.jarmuvek[megtalalt].rendszam == Adatbazis.korozott[j])
                                 {
-                                    korozes = "korozik";
+                                    korozes = "korozik"; // Ha az adott jármú rendszáma megtalálható a körözöttek között, akkor legyen körözött (alapból nem körözött)
                                 }
 
                              j++;
@@ -82,9 +82,9 @@ namespace rendszam
                         }
                             megtalalt++;
                     }
-                    if(nyilvantartasban)
-                    {
-                        sw.WriteLine(rendsz[i] + ";" + ervenyesseg + ";" + korozes);
+                    if(nyilvantartasban) // Jármű adatainak kiírása az osszesit.txt-be valamint a consolera
+                    { 
+                        sw.WriteLine(rendsz[i] + ";" + ervenyesseg + ";" + korozes);  
                         Console.WriteLine(rendsz[i] + ";" + ervenyesseg + ";" + korozes);
                     } else
                         {
@@ -94,8 +94,7 @@ namespace rendszam
 
                 }
             }
-            //Színek megtalálása
-            Console.WriteLine("\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+            Console.WriteLine("\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾"); 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Legkorozottebb szinek:\n");
             Console.ForegroundColor = ConsoleColor.White;
@@ -103,7 +102,7 @@ namespace rendszam
             int kint = 0;
             foreach(Jarmu jarmu in Adatbazis.jarmuvek)
             {
-                    szinek.Add(Adatbazis.jarmuvek[kint].szin);
+                    szinek.Add(Adatbazis.jarmuvek[kint].szin); // Színek hozzáadása egy listához
                     kint++;
             }
             for(int i=0;i<szinek.Count;i++)
@@ -112,17 +111,17 @@ namespace rendszam
                 {
                     if(szinek[i]==szinek[j] && i!=j)
                     {
-                        szinek.RemoveAt(i);
+                        szinek.RemoveAt(i); // Ha már létezik az adott szín, akkor vegye ki a listából, így minden színből csak egy darab lesz
                         i = 0;
                         break;
                     }
                 }
             }
-            int[] megszamol = new int[szinek.Count];
+            int[] megszamol = new int[szinek.Count]; // Ez a tömb tartalmazni fogja, hogy melyik színből mennyi van
 
             for(int i=0;i<szinek.Count;i++)
             {
-                megszamol[i] = 0;
+                megszamol[i] = 0; // Tömb kiürítése 
             }
 
             int osszesen = 0;
@@ -133,14 +132,14 @@ namespace rendszam
                 {
                     if (szinek[i] == jarmu.szin)
                     {
-                        megszamol[i]++;
+                        megszamol[i]++; // A megszámol tömb feltöltése
                         osszesen++;
                     }
                 }
             }
-            int[] eredetiMegszamol = new int[szinek.Count];
-            Array.Copy(megszamol, eredetiMegszamol, szinek.Count);
-            Array.Sort<int>(megszamol,
+            int[] eredetiMegszamol = new int[szinek.Count]; // Ez a tömb tartalmazza a megszámol tömb eredeti formáját (mivel később a megszámol tömb rendeződk)
+            Array.Copy(megszamol, eredetiMegszamol, szinek.Count); // Megszámol tömb bemásolása az eredeti tömbbe
+            Array.Sort<int>(megszamol, // Csökkenő sorrendben rendezi a megszámol tömböt 
                    new Comparison<int>(
                            (i1, i2) => i2.CompareTo(i1)
                    ));
@@ -154,7 +153,7 @@ namespace rendszam
                 {
                     if(megszamol[i]==eredetiMegszamol[x])
                     {
-                         Console.WriteLine(szinek[x] + ": " + Math.Round(megszamol[i] * 100.0 / osszesen, 0) + "%");
+                         Console.WriteLine(szinek[x] + ": " + Math.Round(megszamol[i] * 100.0 / osszesen, 0) + "%"); // Az összes szín kiírása kerekített százalékokkal
                         megszamol[i] = -1; //Ha két ugyanolyan % van, akkor ne azt találja meg amit már egyszer megtalált
                     }
                     x++;
@@ -163,18 +162,18 @@ namespace rendszam
             
 
 
-            List<string> razzia = new List<string>();
-            razzia = Adatbazis.razziaHely();
-            Console.WriteLine("\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+            List<string> razzia = new List<string>(); // Razziahelyek listája
+            razzia = Adatbazis.razziaHely(); // Razzia lista feltöltése az 'Adatbázis' osztályban megírt függvénnyel
+            Console.WriteLine("\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾"); 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Razziahelyek:\n");
             Console.ForegroundColor = ConsoleColor.White;
             if (razzia.Count > 0) {
                 for (int i = 0; i < razzia.Count; i++) {
-                    Console.WriteLine(razzia[i]);
+                    Console.WriteLine(razzia[i]); // Ha vannak razziahelyek, akkor írja ki őket
                 }
             } else {
-                Console.WriteLine("Nincs kiemelt helyszín.");
+                Console.WriteLine("Nincs kiemelt helyszín."); // Ha nincsenek egy razziahely sem, akkor az jelezze
             }
             Console.WriteLine("_____________________");
             Console.ReadKey();
